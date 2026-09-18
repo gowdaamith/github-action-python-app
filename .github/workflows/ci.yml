@@ -85,7 +85,10 @@ jobs:
         run : |
           docker build \
             -t employee-api:${{ github.sha }} .
-          
+      
+      - name: List docker iamges
+        run: | 
+          docker images
       
           
         
