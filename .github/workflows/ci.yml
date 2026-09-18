@@ -28,21 +28,21 @@ jobs:
       - name: Run linting
         run: |
             ruff check .
-test: 
+  test: 
 
-  runs-on: ubuntu-latest
-  steps:
-    - name: checkout repository
-      uses: actions/checkout@v7
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v7
 
-    - name: setup python
-      uses: actions/setup-python@v7
-      with: 
-        python-version: '3.13'
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-    - name: Run tests
-      run: | 
-        python -m pytest
+      - name: setup python
+        uses: actions/setup-python@v7
+        with: 
+          python-version: '3.13'
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: Run tests
+        run: | 
+          python -m pytest
