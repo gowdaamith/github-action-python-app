@@ -72,6 +72,19 @@ jobs:
         with:
           name: employee-api
           path: employee-api.zip
+
+  docker:
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v7
+
+      - name: Build the docker image
+        run : |
+          docker build -t  employee-api:latest .
           
+      
           
         
