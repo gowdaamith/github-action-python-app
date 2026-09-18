@@ -1,7 +1,6 @@
-name: Python CI
+name: python CI
 
-
-on: 
+on:
   push:
     branches:
       - main
@@ -10,31 +9,40 @@ on:
       - main
 
 jobs:
-
-  test:
+  lint:
     runs-on: ubuntu-latest
-
     steps:
-
-      - name: Checkout repository
+      - name: checkout repository
         uses: actions/checkout@v7
 
       - name: setup python
         uses: actions/setup-python@v7
         with:
-          python-version: '3.13'
-      
-      - name: install dependencies
+          python-version: '3.14'
+          
+      - name: Insall dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-        
+
       - name: Run linting
-        run: | 
-          ruff check .
-      
-      - name: Run test
-        run: | 
-          python -m pytest
+        run: |
+            ruff check .
+test: 
 
+  runs-on: ubuntu-latest
+  steps:
+    - name: checkout repository
+      uses: actions/checkout@v7
 
+    - name: setup python
+      uses: actions/setup-python@v7
+      with: 
+        python-version: '3.13'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run tests
+      run: | 
+        python -m pytest
