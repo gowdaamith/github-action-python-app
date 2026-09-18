@@ -84,7 +84,7 @@ jobs:
       - name: Build the docker image
         run : |
           docker build \
-            -t employee-api:${{ github.sha}} .
+            -t employee-api:${{ github.sha }} .
           
       
           
