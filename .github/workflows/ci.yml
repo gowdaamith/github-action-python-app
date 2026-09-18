@@ -46,3 +46,31 @@ jobs:
       - name: Run tests
         run: | 
           python -m pytest
+
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository 
+        uses: actions/checkout@v7
+        
+      - name: Create a build directory
+        run: mkdir -p build
+
+      - name: Copy application file to the build dir
+        run : |
+          cp -r app build/
+          cp requirements.txt build/
+      
+      - name: Create zip file
+        run: |
+          gzip -r employee-api.zip build/
+
+      - name: upload build artifacts
+        uses: actions/upload-artifact@v7
+        with:
+          name: employee-api
+          path: employee-api.zip
+          
+          
+        
