@@ -65,7 +65,7 @@ jobs:
       
       - name: Create zip file
         run: |
-          gzip -r employee-api.zip build/
+          zip -r employee-api.zip build/
 
       - name: upload build artifacts
         uses: actions/upload-artifact@v7
